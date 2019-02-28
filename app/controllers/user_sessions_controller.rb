@@ -3,7 +3,7 @@
 # Overrides for Device's SessionsController
 class UserSessionsController < Devise::SessionsController
 
-  respond_to :js
+  respond_to :json
 
   def create
     login_error = true
@@ -17,18 +17,14 @@ class UserSessionsController < Devise::SessionsController
       sign_in(resource_name, resource)
       yield resource if block_given?
       l = after_sign_in_path_for(resource)
-      respond_with resource, location: l do |format|
-        format.js { render js: "window.location = '#{l}'" }
-      end
+      render json: resource
     else
       user_params = params.require(:user).permit(:email, :password, :remember_me)
       self.resource = User.new(user_params)
       msg = _('Invalid email or password.')
       flash.now[:warning] = msg
       resource.errors[:base] << msg
-      respond_with resource do |format|
-        format.js { render 'new' }
-      end
+      render json: msg
     end
   end
 

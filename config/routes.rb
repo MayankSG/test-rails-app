@@ -19,10 +19,12 @@ Rails.application.routes.draw do
 
   resources :user_activity, only: [] do
     collection do
-      get :save_user_answers
+      post :save_user_answers
       get :get_questions
     end
   end
+
+  post 'logout' => 'user_sessions#logout', as: :logout 
 
   # Static pages
   get 'welcome' => 'static_pages#sign_up_success', as: :sign_up_success

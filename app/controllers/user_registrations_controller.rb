@@ -6,7 +6,7 @@ class UserRegistrationsController < Devise::RegistrationsController
   respond_to :js
 
   def create
-    build_resource(sign_up_params)
+   build_resource(sign_up_params)
 
     resource.save
     yield resource if block_given?
@@ -14,15 +14,11 @@ class UserRegistrationsController < Devise::RegistrationsController
       set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
       expire_data_after_sign_in!
       l = after_inactive_sign_up_path_for(resource)
-      respond_with resource, location: l do |format|
-        format.js { render js: "window.location = '#{l}'" }
-      end
+      render json: resource
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource do |format|
-        format.js { render 'new' }
-      end
+      render json: resource.errors.full_messages
     end
   end
 
