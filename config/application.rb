@@ -15,6 +15,7 @@ require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+
 Bundler.require(*Rails.groups)
 
 module MyProject
@@ -35,6 +36,16 @@ module MyProject
 
     config.free_trial_period_length = (ENV['FREE_TRIAL_PERIOD_IN_DAYS'] || 14).to_i
     config.monthly_fee = (ENV['MONTHLY_FEE'] || 10).to_f
+
+    config.middleware.insert_before 0, Rack::Cors, debug: true do
+      allow do
+        origins '*'
+        resource(
+          '*',
+          headers: :any,
+          methods: [:get, :post, :delete, :put, :patch, :options])
+      end
+    end
 
   end
 

@@ -17,6 +17,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :user_activity, only: [] do
+    collection do
+      get :save_user_answers
+      get :get_questions
+    end
+  end
+
   # Static pages
   get 'welcome' => 'static_pages#sign_up_success', as: :sign_up_success
   get 'sign_up_unconfirmed' => 'static_pages#sign_up_unconfirmed', as: :sign_up_unconfirmed
