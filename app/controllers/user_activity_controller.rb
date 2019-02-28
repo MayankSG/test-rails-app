@@ -1,5 +1,4 @@
 class UserActivityController < ApplicationController
-  before_action :authenticate_user!
 
   def save_user_answers
     user_answer = UserAnswer.new(user_answer_params)
