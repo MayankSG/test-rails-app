@@ -3,13 +3,14 @@ class UserActivityController < ApplicationController
   def save_user_answers
     user_answer = UserAnswer.new(user_answer_params)
     if user_answer.save
-      flash.now[:success] = "answer save successfully."
-    else	
-      user_answer.errors.full_messages.join(', ')
+      msg = flash.now[:success] = "answer save successfully."
+    else
+      msg = user_answer.errors.full_messages.join(', ')
     end
+    render json: msg
   end
 
-  def get_questions
+  def questions
     ques = Question.all
     render json: ques
   end

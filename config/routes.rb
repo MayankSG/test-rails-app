@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :user_activity, only: [] do
     collection do
       post :save_user_answers
-      get :get_questions
+      get :questions
     end
   end
 
