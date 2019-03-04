@@ -25,12 +25,12 @@ rake db:seed
 ### Start
 
 ```
-rails s
+rails s -p 5000
 ```
 
 This will:
 
- * start local Rails server on port 3000
+ * start local Rails server on port 5000
 
 ### Test users
 
