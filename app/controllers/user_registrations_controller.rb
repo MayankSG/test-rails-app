@@ -12,7 +12,7 @@ class UserRegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     if resource.persisted?
       resource.confirm
-      render json: resource.confirmation_token
+      render json: {token: resource.confirmation_token}
     else
       clean_up_passwords resource
       set_minimum_password_length

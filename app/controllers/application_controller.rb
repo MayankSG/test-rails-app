@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   # recommended for i18n with the gettext_i18n_rails gem
   before_action :set_gettext_locale
+  before_action :set_current_user
 
   def set_flash_changes_saved(now = false)
     message = _('Your changes have been saved')
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
     process_unpermitted unless current_user.id == object.user_id
 
     instance_variable_set("@#{type}".to_sym, object)
+  end
+
+  def set_current_user
+    @current_user = User.find_by(confirmation_token: params[:token])
   end
 
   def process_unpermitted

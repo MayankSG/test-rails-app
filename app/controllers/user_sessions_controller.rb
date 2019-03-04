@@ -16,7 +16,7 @@ class UserSessionsController < Devise::SessionsController
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
       yield resource if block_given?
-      render json: resource.confirmation_token
+      render json: {token: resource.confirmation_token}
     else
       user_params = params.require(:user).permit(:email, :password, :remember_me)
       self.resource = User.new(user_params)

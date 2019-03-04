@@ -2,6 +2,7 @@ class UserActivityController < ApplicationController
 
   def save_user_answers
     user_answer = UserAnswer.new(user_answer_params)
+    user_answer.user_id = current_user.id
     if user_answer.save
       msg = flash.now[:success] = "answer save successfully."
     else
