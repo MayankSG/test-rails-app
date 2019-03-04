@@ -3,7 +3,7 @@
 # Overrides for Device's RegistrationsController
 class UserRegistrationsController < Devise::RegistrationsController
 
-  respond_to :js
+  respond_to :json
 
   def create
    build_resource(sign_up_params)
@@ -11,10 +11,8 @@ class UserRegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-      expire_data_after_sign_in!
-      l = after_inactive_sign_up_path_for(resource)
-      render json: resource
+      resource.confirm
+      render json: resource.confirmation_token
     else
       clean_up_passwords resource
       set_minimum_password_length
