@@ -1,0 +1,7 @@
+<div id="here" class="container"></div></br></br>
+<div class="que-header"><center><b>Questions</b></center> </div></br>
+<div id="ques_container"></div>
+<script>
+  HelloComponent.injectToPage('#here', <%= {email: current_user.email}.to_json.html_safe %>)
+  QuestionComponent.injectToPage('#ques_container', <%= {question: @ques, user: current_user}.to_json.html_safe %>)
+</script>

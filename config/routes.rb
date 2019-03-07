@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   resources :user_activity, only: [] do
     collection do
       post :save_user_answers
-      get :questions
     end
   end
+
+  get '/finish' => 'user_activity#finish'
+  get '/questions' => 'user_activity#questions'
 
   post 'logout' => 'user_sessions#logout', as: :logout 
 
