@@ -70,6 +70,20 @@ $text_color_my_account_regular: #fff;
     }
 
     /* ------------------------ MY ACCOUNT ------------------------ */
+
+    .questions {
+      display: inline-block;
+      cursor: pointer;
+      /* float: right; */
+      color: #92959b;
+      font-size: 14px;
+      height: 110px;
+      line-height: 110px;
+      padding: 0px 35px;
+      position: relative;
+      bottom: -5px;
+    }
+
     .my-account {
       display: inline-block;
       cursor: pointer;

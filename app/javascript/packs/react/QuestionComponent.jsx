@@ -77,7 +77,7 @@ export default class QuestionComponent extends React.Component {
                     <label >{question.title}</label><br/>
                     { question.options.map((op,index) =>
                       <div key={index} className="form-check d-inline-block pr-2">
-                        <input className="form-check-input" type="radio" name="answer" value={op} onChange={(e) => this.handleChange(e)} />
+                        <input className="form-check-input radio-btn" type="radio" name="answer" value={op} onChange={(e) => this.handleChange(e)} />
                         <label className="form-check-label" >
                           {op}
                         </label>

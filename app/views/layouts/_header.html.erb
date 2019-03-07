@@ -2,7 +2,10 @@
 
 <header class="main-header<%= header_class_addition %>">
   <div class="content">
-    <div class="my-account">
+    <div class="col-md-10 questions">
+      <%= link_to "Questions", questions_path %>
+    </div>
+    <div class="my-account col-md-2">
       <%= _("My account") %>
       <%= inline_svg("Entypo+/chevron-down.svg", class: "icon") %>
       <div class="my-account-block">
