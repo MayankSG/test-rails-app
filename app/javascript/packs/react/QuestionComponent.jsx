@@ -69,23 +69,25 @@ export default class QuestionComponent extends React.Component {
           if(index == this.state.next) {
             return (
               <form key={index}>
-                <div className="container que">
-                  {this.state.error ? <div className="alert alert-danger" role="alert">
-                        <strong>{this.state.error}</strong>
-                      </div> : '' }
-                  <div className="form-group card shadow p-4 mt-5">
-                    <label >{question.title}</label><br/>
-                    { question.options.map((op,index) =>
-                      <div key={index} className="form-check d-inline-block pr-2">
-                        <input className="form-check-input radio-btn" type="radio" name="answer" value={op} onChange={(e) => this.handleChange(e)} />
-                        <label className="form-check-label" >
-                          {op}
-                        </label>
-                      </div>
-                    )}
+                <center>
+                  <div className="container que">
+                    {this.state.error ? <div className="alert alert-danger" role="alert">
+                          <strong>{this.state.error}</strong>
+                        </div> : '' }
+                    <div className="form-group card shadow p-4 mt-5">
+                      <label >{question.title}</label><br/>
+                      { question.options.map((op,index) =>
+                        <div key={index} className="form-check d-inline-block pr-2">
+                          <input className="form-check-input radio-btn" type="radio" name="answer" value={op} onChange={(e) => this.handleChange(e)} />
+                          <label className="form-check-label" >
+                            {op}
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                    <button type="button" className="btn btn-success" onClick={(id) => {this.nextQuestion(question.id)}}>Next</button>
                   </div>
-                  <button type="button" className="btn btn-success" onClick={(id) => {this.nextQuestion(question.id)}}>Next</button>
-                </div>
+                </center>
               </form>
             )
           }
