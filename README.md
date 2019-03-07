@@ -14,6 +14,8 @@ To run the app locally, *Ruby 2.4.1* should be installed, and a *PostgreSQL 9.4.
 ```
 bundle install
 
+bundle exec rails webpacker:install:react
+
 ```
 
 Create and initilize the database with:
@@ -25,12 +27,17 @@ rake db:seed
 ### Start
 
 ```
-rails s -p 5000
+bundle exec guard start --no-interactions
+
 ```
 
 This will:
 
- * start local Rails server on port 5000
+ 
+  * start local Rails server on port 3000
+  * start the Webpacker dev server
+  * monitor files changes and run [rubocop](docs/rubocop.md) inspections on changes
+  * run bundle install when needed
 
 ### Test users
 
