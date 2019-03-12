@@ -1,17 +1,18 @@
 <% header_class_addition = yield(:css_schema) && yield(:css_schema).length > 0 ? " #{yield(:css_schema)}" : "" %>
 
 <header class="main-header<%= header_class_addition %>">
-  <div class="content">
-    <div class="col-md-10 questions">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <div class="content col-md-12">
+    <div class="col-md-8 questions">
       <%= link_to "Questions", questions_path %>
     </div>
-    <div class="my-account col-md-2">
+    <div class="my-account col-md-3">
       <%= _("My account") %>
       <%= inline_svg("Entypo+/chevron-down.svg", class: "icon") %>
       <div class="my-account-block">
         <ul>
           <li><%= link_to _("Settings"), my_profile_path %></li>
-          <li>
+          <li class="signout-btn">
             <%= form_tag destroy_user_session_path, method: :delete do %>
               <%= button_tag _("Sign out"), class: "link" %>
             <% end %>

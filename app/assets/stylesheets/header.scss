@@ -29,7 +29,7 @@ $text_color_my_account_regular: #fff;
   z-index: $header_layer;
 
   .content {
-    max-width: $header_max_width;
+    max-width: 100%;
 
     #logo {
       @include flex(row);
@@ -84,7 +84,17 @@ $text_color_my_account_regular: #fff;
       bottom: -5px;
     }
 
+    .signout-btn{
+      padding-right: 23% !important;
+    }
+
+    .signout-btn button{
+      margin-right: 0px !important;
+      padding-right: 0px !important;
+    }
+
     .my-account {
+      text-align: right;
       display: inline-block;
       cursor: pointer;
       float: right;
@@ -110,17 +120,22 @@ $text_color_my_account_regular: #fff;
     }
 
     .my-account-block {
+      max-width: 45%;
+      margin-left: 55%;
+      width: 85%;
       background: #fff;
       box-shadow: 0 1px 2px 0 #d4d4d4;
       border: 1px solid #d3d3d3;
       border-radius: 3px;
       display: none;
       z-index: $header_layer;
+      margin-top: -12%;
 
       li {
         height: 40px;
         line-height: 40px;
         text-align: center;
+        padding-right: 10%;
       }
 
       ul {
@@ -225,5 +240,14 @@ $text_color_my_account_regular: #fff;
     margin-bottom: -9px;
     margin-left: -8px;
     fill: #cea729;
+  }
+}
+
+
+@media screen and (max-width: 720px) {
+  .my-account-block {
+    max-width: 100% !important;
+    width: 106% !important;
+    margin-left: 0 !important;
   }
 }
